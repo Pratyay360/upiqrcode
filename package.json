@@ -2,9 +2,11 @@
   "name": "upiqrcode",
   "version": "1.0.0",
   "description": "Npci complient qrcodes generator for using with node js",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,23 @@
     "url": "https://pratyayupi.vercel.app/"
   },
   "homepage": "https://github.com/Pratyay360/upiqrcode#readme",
-  "keywords": ["upi", "qrcode", "nodejs", "npci", "upiqrcode", "upiqr"],
+  "keywords": [
+    "upi",
+    "qrcode",
+    "nodejs",
+    "npci",
+    "upiqrcode",
+    "upiqr"
+  ],
   "author": "Pratyay Mitra Mustafi <pratyaymustafi@outlook.com> (https://pratyay.vercel.app/)",
-  "license": "GPLV3"
+  "license": "GPLV3",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "dependencies": {
+    "@types/qrcode": "^1.5.1"
+  }
 }
