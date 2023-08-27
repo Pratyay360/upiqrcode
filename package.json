@@ -1,7 +1,7 @@
 {
   "name": "upiqrcode",
-  "version": "1.0.0",
-  "description": "Npci complient qrcodes generator for using with node js",
+  "version": "1.0.1",
+  "description": "Npci complient qrcodes generator for using with node js (with type defination)",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
