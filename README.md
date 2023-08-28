@@ -3,6 +3,7 @@
 [![Downloads][downloads-img]][downloads-url]
 [![Issues][issues-img]][issues-url]
 [![Semantic Release][semantic-release-img]][semantic-release-url]
+<br />
 Generate NPCI's UPI QR code (BASE64) along with UPI intent link, By using it any payment is possible from UPI enabled apps.
 
 ## Supports
