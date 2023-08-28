@@ -26,7 +26,8 @@
     "nodejs",
     "npci",
     "upiqrcode",
-    "upiqr"
+    "upi qrcode",
+    "upi qr code"
   ],
   "author": "Pratyay Mitra Mustafi <pratyaymustafi@outlook.com> (https://pratyay.vercel.app/)",
   "license": "GPLV3",
