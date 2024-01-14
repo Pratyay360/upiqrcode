@@ -57,6 +57,7 @@ For a complete list of supported fields, refer to the [NPCI UPI Linking Specs](h
 
 Internally using `@types/qrcode` for QR Generation.
 
+Refer the [blog](https://pratyaywrites.hashnode.dev/use-upiqrcode) written by me on how to use this package for additional help.
 
 [downloads-img]:https://img.shields.io/npm/dt/upiqrcode
 [downloads-url]:https://www.npmtrends.com/upiqrcode
