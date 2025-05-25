@@ -211,25 +211,25 @@ git clone https://github.com/Pratyay360/upiqrcode.git
 cd upiqrcode
 
 # Install dependencies
-pnpm install
+npm install
 
 # Run the example
-pnpm run example
+npm run example
 
 # Run tests
-pnpm test
+npm test
 
 # Build the project
-pnpm run build
+npm run build
 ```
 
 ### Project Scripts
 
 | Script | Description |
 |--------|-------------|
-| `pnpm run build` | Compile TypeScript to JavaScript |
-| `pnpm test` | Run the test suite |
-| `pnpm run example` | Execute usage examples |
+| `npm run build` | Compile TypeScript to JavaScript |
+| `npm test` | Run the test suite |
+| `npm run example` | Execute usage examples |
 
 ## 🔧 Error Handling
 
@@ -354,10 +354,10 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 1. Fork the repository
 2. Clone your fork: `git clone https://github.com/yourusername/upiqrcode.git`
-3. Install dependencies: `pnpm install`
+3. Install dependencies: `npm install`
 4. Make your changes
-5. Run tests: `pnpm test`
-6. Build the project: `pnpm run build`
+5. Run tests: `npm test`
+6. Build the project: `npm run build`
 7. Create a Pull Request
 
 ## 📄 License
