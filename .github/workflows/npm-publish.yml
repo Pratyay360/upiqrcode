@@ -52,8 +52,8 @@ jobs:
         env:
           GIT_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name $({ secrets.uname })
+          git config user.email $({ secrets.uemail })
           git remote set-url origin https://${GIT_AUTH_TOKEN}@github.com/${{ github.repository }}
           npm version ${{ github.event.inputs.version_bump }} --no-git-tag-version
           git add package.json
