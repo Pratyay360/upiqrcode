@@ -1,6 +1,6 @@
 {
   "name": "upiqrcode",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Unofficial UPI QR code generator for Node.js with TypeScript support. Educational project - not affiliated with NPCI or financial institutions.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
