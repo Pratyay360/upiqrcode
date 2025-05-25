@@ -1,7 +1,5 @@
 node_modules
 /lib
-package-lock.json
-*-lock.*
 
 # Build outputs
 *.tsbuildinfo
