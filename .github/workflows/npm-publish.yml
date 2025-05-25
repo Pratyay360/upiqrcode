@@ -57,7 +57,7 @@ jobs:
       - name: Bump version
         env:
           GIT_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-        run:
+        run: |
           git config user.name "${{ secrets.uname }}"
           git config user.email "${{ secrets.uemail }}"
           git remote set-url origin https://${GIT_AUTH_TOKEN}@github.com/${{ github.repository }}
