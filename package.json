@@ -1,7 +1,7 @@
 {
   "name": "upiqrcode",
   "version": "1.0.4",
-  "description": "(Unofficial) Npci complient qrcodes generator for using with node js (with type defination)",
+  "description": "Unofficial UPI QR code generator for Node.js with TypeScript support. Educational project - not affiliated with NPCI or financial institutions.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -26,13 +26,17 @@
     "upi",
     "qrcode",
     "nodejs",
-    "npci",
+    "unofficial-npci",
     "upiqrcode",
     "upi qrcode",
-    "upi qr code"
+    "upi qr code",
+    "payment",
+    "india",
+    "typescript",
+    "educational"
   ],
   "author": "Pratyay Mitra Mustafi <pratyaymustafi@outlook.com> (https://pratyay.vercel.app/)",
-  "license": "GPLV3",
+  "license": "GPL-3.0",
   "engines": {
     "node": ">=18.0.0",
     "pnpm": ">=8.0.0"
