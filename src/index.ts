@@ -1,4 +1,5 @@
-const QRCode = require("qrcode");
+import * as QRCode from "qrcode";
+
 interface UpiqrcodeParams {
     payeeVPA?: string;
     payeeName?: string;
@@ -19,18 +20,28 @@ interface UpiqrcodeResult {
 
 function validateParams({ payeeVPA: pa, payeeName: pn }: UpiqrcodeParams) {
     let error = "";
-    if (!pa || !pn) error = "Virtual Payee's Address/Payee's Name is compulsory";
-    if (pa && pa.length < 5 || pn && pn.length < 4)
+    if (!pa || !pn) {
+        error = "Virtual Payee's Address/Payee's Name is compulsory";
+    } else if (pa.trim().length < 5 || pn.trim().length < 4) {
         error = "Virtual Payee's Address/Payee's Name is too short.";
+    }
     return error;
 }
 
-function buildUrl(this: string, params: Record<string, string>) {
-    let url = this,
-        qs = "";
-    for (const [key, value] of Object.entries(params))
-        qs += encodeURIComponent(key) + "=" + encodeURIComponent(value) + "&";
-    if (qs.length > 0) url = url + qs;
+function buildUrl(baseUrl: string, params: Record<string, string>) {
+    let url = baseUrl;
+    const queryParams: string[] = [];
+    
+    for (const [key, value] of Object.entries(params)) {
+        if (value && value.trim() !== '') {
+            queryParams.push(encodeURIComponent(key) + "=" + encodeURIComponent(value));
+        }
+    }
+    
+    if (queryParams.length > 0) {
+        url += queryParams.join("&");
+    }
+    
     return url;
 }
 
@@ -48,27 +59,41 @@ async function upiqrcode({
 }: UpiqrcodeParams): Promise<UpiqrcodeResult> {
     return new Promise<UpiqrcodeResult>((resolve, reject) => {
         const error = validateParams({ payeeVPA: pa, payeeName: pn });
-        if (error) reject(new Error(error));
-
-        let intent = "upi://pay?";
-        if (pa !== undefined) intent = buildUrl.call(intent, { pa, pn: pn! });
-        if (am !== undefined) intent = buildUrl.call(intent, { am });
-        if (mam !== undefined) intent = buildUrl.call(intent, { mam });
-        if (cu !== undefined) intent = buildUrl.call(intent, { cu });
-        if (me !== undefined) intent = buildUrl.call(intent, { me });
-        if (tid !== undefined) intent = buildUrl.call(intent, { tid });
-        if (tr !== undefined) intent = buildUrl.call(intent, { tr });
-        if (tn !== undefined) intent = buildUrl.call(intent, { tn });
-        if (intent !== undefined) intent = intent.substring(0, intent.length - 1);
-
-        var opts ={
-            quality: 1.0,
-            margin: 3,
-            scale:10,
+        if (error) {
+            reject(new Error(error));
+            return;
         }
 
-        QRCode.toDataURL(intent, opts, (err:any , qr:any) => {
-            if (err) reject(new Error("Unable to generate UPI QR Code."));
+        let intent = "upi://pay?";
+        const params: Record<string, string> = {};
+        
+        // Add required parameters
+        if (pa) params.pa = pa;
+        if (pn) params.pn = pn;
+        
+        // Add optional parameters
+        if (am) params.am = am;
+        if (mam) params.mam = mam;
+        if (cu) params.cu = cu;
+        if (me) params.me = me;
+        if (tid) params.tid = tid;
+        if (tr) params.tr = tr;
+        if (tn) params.tn = tn;
+        if (url) params.url = url;
+
+        intent = buildUrl(intent, params);
+
+        const opts = {
+            quality: 1.0,
+            margin: 3,
+            scale: 10,
+        };
+
+        QRCode.toDataURL(intent, opts, (err: any, qr: any) => {
+            if (err) {
+                reject(new Error("Unable to generate UPI QR Code."));
+                return;
+            }
             resolve({ qr, intent });
         });
     });

@@ -6,7 +6,9 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "test": "node lib/test.js",
+    "example": "node examples/basic-usage.js",
+    "prepublishOnly": "pnpm run build"
   },
   "repository": {
     "type": "git",
@@ -31,13 +33,18 @@
   ],
   "author": "Pratyay Mitra Mustafi <pratyaymustafi@outlook.com> (https://pratyay.vercel.app/)",
   "license": "GPLV3",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
   "devDependencies": {
-    "typescript": "^5.2.2"
+    "typescript": "^5.8.3"
   },
   "files": [
     "lib/**/*"
   ],
   "dependencies": {
-    "@types/qrcode": "^1.5.1"
+    "@types/qrcode": "^1.5.5",
+    "qrcode": "^1.5.4"
   }
 }
