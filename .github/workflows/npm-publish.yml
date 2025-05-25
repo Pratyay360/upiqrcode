@@ -3,6 +3,9 @@
 
 name: Node.js Package
 
+permissions:
+  contents: read
+
 on:
   workflow_dispatch:
     inputs:
@@ -37,6 +40,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: github.event.inputs.publish_to_npm == 'true'
+    permissions:
+      contents: write
+      packages: write
     steps:
       - uses: actions/checkout@v4
         with:
