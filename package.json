@@ -19,7 +19,7 @@
   },
   "funding": {
     "type": "upi",
-    "url": "https://pratyayupi.vercel.app/"
+    "url": "https://upi.pratyay.bond/"
   },
   "homepage": "https://github.com/Pratyay360/upiqrcode#readme",
   "keywords": [
@@ -35,7 +35,7 @@
     "typescript",
     "educational"
   ],
-  "author": "Pratyay Mitra Mustafi <pratyaymustafi@outlook.com> (https://pratyay.vercel.app/)",
+  "author": "Pratyay Mitra Mustafi <pratyaymustafi@outlook.com> (https://pratyay.bond)",
   "license": "GPL-3.0",
   "engines": {
     "node": ">=18.0.0",
