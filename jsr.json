@@ -1,10 +1,8 @@
 {
   "name": "@pratyay360/upiqrcode",
-  "version": "1.2.0",
+  "version": "1.5.2",
   "license": "Apache-2.0",
-  "exports": "./pkg/upiqrcode.js",
-  "module": "./pkg/upiqrcode.js",
+  "exports": "./upiqrcode.js",
   "types": "./pkg/upiqrcode.d.ts",
-  "sideEffects": false,
   "wasm": "./pkg/upiqrcode_bg.wasm"
 }

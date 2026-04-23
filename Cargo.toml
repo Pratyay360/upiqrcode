@@ -1,6 +1,6 @@
 [package]
 name = "upiqrcode"
-version = "1.5.1"
+version = "1.5.2"
 authors = ["PRATYAY MUSTAFI <pratyaymustafi@outlook.com>"]
 edition = "2018"
 description = "Generate UPI QR codes as SVG — compiled to WebAssembly"
