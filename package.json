@@ -4,7 +4,7 @@
     "PRATYAY MUSTAFI <pratyaymustafi@outlook.com>"
   ],
   "description": "Generate UPI QR codes as SVG — compiled to WebAssembly",
-  "version": "1.5.1",
+  "version": "1.5.3",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
