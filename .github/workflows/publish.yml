@@ -74,11 +74,9 @@ jobs:
         with:
           node-version: "25"
           registry-url: "https://registry.npmjs.org"
+          scope: "@pratyay360"
       - name: Publish @pratyay360/upiqrcode
         run: |
-          cp package.json pkg && cd pkg
+          cp package.json pkg && cp jsr.json pkg && cd pkg
           npm publish  --access public
-      - name: Publish @pratyay360/upiqrcode to jsr
-        run: |
-          cp  package.json pkg && cd pkg
           npx jsr publish 
