@@ -49,6 +49,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - name: Publish @pratyay360/upiqrcode
         run: |
-          cp package.json pkg && cp jsr.json pkg && cd pkg
+          cp jsr.json pkg && cd pkg
           npm publish  --access public
+          cp ../package.json .
           npx jsr publish 
