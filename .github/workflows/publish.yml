@@ -17,7 +17,9 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -46,7 +48,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "25"
           registry-url: "https://registry.npmjs.org"
 
       - name: Assemble package
@@ -55,7 +57,6 @@ jobs:
           const fs = require("fs");
 
           const pkg = JSON.parse(fs.readFileSync("pkg/bundler/package.json", "utf8"));
-
           // Copy ESM wasm + JS into a subdirectory
           fs.mkdirSync("pkg/bundler/esm", { recursive: true });
           for (const f of fs.readdirSync("pkg/esm")) {
@@ -78,8 +79,7 @@ jobs:
           EOF
 
       - name: Publish to npm
-        run: npm publish pkg/bundler --access public
+        run: wasm-pack publish 
         
       - name: publish to jsr
-        run: npx jsr publish --access public
-        
+        run: wasm-pack publish jsr
