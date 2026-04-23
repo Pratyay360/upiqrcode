@@ -1,0 +1,84 @@
+name: Build & Publish
+
+on:
+  workflow_dispatch: s
+
+permissions:
+  contents: read
+  actions: write
+  id-token: write
+  packages: write
+
+jobs:
+  build-and-publish:
+    name: wasm-pack build & npm publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Cache Cargo registry & build
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-
+
+      - name: Install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+      - name: Build ESM (web target)
+        run: wasm-pack build --target web --release --out-dir pkg/esm
+
+      - name: Build CJS/bundler target
+        run: wasm-pack build --target bundler --release --out-dir pkg/bundler
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Assemble package
+        run: |
+          node - <<'EOF'
+          const fs = require("fs");
+
+          const pkg = JSON.parse(fs.readFileSync("pkg/bundler/package.json", "utf8"));
+
+          // Copy ESM wasm + JS into a subdirectory
+          fs.mkdirSync("pkg/bundler/esm", { recursive: true });
+          for (const f of fs.readdirSync("pkg/esm")) {
+            fs.copyFileSync(`pkg/esm/${f}`, `pkg/bundler/esm/${f}`);
+          }
+
+          // Add exports map so bundlers and native ESM both resolve correctly
+          pkg.exports = {
+            ".": {
+              "import": "./esm/upiqrcode.js",
+              "require": "./upiqrcode.js"
+            }
+          };
+          pkg.module = "./esm/upiqrcode.js";
+          pkg.main   = "./upiqrcode.js";
+          pkg.types  = "./upiqrcode.d.ts";
+          pkg.sideEffects = ["./esm/upiqrcode_bg.wasm"];
+
+          fs.writeFileSync("pkg/bundler/package.json", JSON.stringify(pkg, null, 2));
+          EOF
+
+      - name: Publish to npm
+        run: npm publish pkg/bundler --access public
+        
+      - name: publish to jsr
+        run: npx jsr publish --access public
+        

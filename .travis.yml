@@ -25,7 +25,6 @@ matrix:
       - cd testing
       - wasm-pack build
       - wasm-pack test --chrome --firefox --headless
-
   # Builds on nightly.
   - rust: nightly
     env: RUST_BACKTRACE=1
