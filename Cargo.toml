@@ -2,7 +2,7 @@
 name = "upiqrcode"
 version = "1.5.2"
 authors = ["PRATYAY MUSTAFI <pratyaymustafi@outlook.com>"]
-edition = "2018"
+edition = "2026"
 description = "Generate UPI QR codes as SVG — compiled to WebAssembly"
 license = "Apache-2.0"
 repository = "https://github.com/pratyay360/upiqrcode"
