@@ -40,34 +40,7 @@ jobs:
         run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
       - name: Build nodejs
-        run: wasm-pack build --target nodejs --release 
-
-      - name: Assemble package
-        run: |
-          node - <<'EOF'
-          const fs = require("fs");
-
-          const pkg = JSON.parse(fs.readFileSync("pkg/bundler/package.json", "utf8"));
-          // Copy ESM wasm + JS into a subdirectory
-          fs.mkdirSync("pkg/bundler/esm", { recursive: true });
-          for (const f of fs.readdirSync("pkg/esm")) {
-            fs.copyFileSync(`pkg/esm/${f}`, `pkg/bundler/esm/${f}`);
-          }
-
-          // Add exports map so bundlers and native ESM both resolve correctly
-          pkg.exports = {
-            ".": {
-              "import": "./esm/upiqrcode.js",
-              "require": "./upiqrcode.js"
-            }
-          };
-          pkg.module = "./esm/upiqrcode.js";
-          pkg.main   = "./upiqrcode.js";
-          pkg.types  = "./upiqrcode.d.ts";
-          pkg.sideEffects = ["./esm/upiqrcode_bg.wasm"];
-
-          fs.writeFileSync("pkg/bundler/package.json", JSON.stringify(pkg, null, 2));
-          EOF
+        run: wasm-pack build --target nodejs
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
