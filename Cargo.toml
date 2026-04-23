@@ -5,8 +5,8 @@ authors = ["PRATYAY MUSTAFI <pratyaymustafi@outlook.com>"]
 edition = "2024"
 description = "Generate UPI QR codes as SVG — compiled to WebAssembly"
 license = "Apache-2.0"
-repository = "https://github.com/pratyay360/upiqrcode"
-homepage = "https://github.com/pratyay360/upiqrcode"
+repository = "https://github.com/Pratyay360/upiqrcode"
+homepage = "https://github.com/Pratyay360/upiqrcode"
 keywords = ["upi", "qrcode", "wasm", "svg", "payment"]
 categories = ["wasm", "encoding"]
 
