@@ -1,12 +1,12 @@
 [package]
-name = "@pratyay360/upiqrcode"
-version = "1.5.0"
+name = "upiqrcode"
+version = "1.5.1"
 authors = ["PRATYAY MUSTAFI <pratyaymustafi@outlook.com>"]
 edition = "2018"
 description = "Generate UPI QR codes as SVG — compiled to WebAssembly"
-license = "MIT OR Apache-2.0"
-repository = "https://github.com/pratyaymustafi/upiqrcode"
-homepage = "https://github.com/pratyaymustafi/upiqrcode"
+license = "Apache-2.0"
+repository = "https://github.com/pratyay360/upiqrcode"
+homepage = "https://github.com/pratyay360/upiqrcode"
 keywords = ["upi", "qrcode", "wasm", "svg", "payment"]
 categories = ["wasm", "encoding"]
 
