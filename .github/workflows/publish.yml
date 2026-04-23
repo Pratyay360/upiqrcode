@@ -39,17 +39,8 @@ jobs:
       - name: Install wasm-pack
         run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
-      - name: Build ESM (web target)
-        run: wasm-pack build --target web --release --out-dir pkg/esm
-
-      - name: Build CJS/bundler target
-        run: wasm-pack build --target bundler --release --out-dir pkg/bundler
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "25"
-          registry-url: "https://registry.npmjs.org"
+      - name: Build nodejs
+        run: wasm-pack build --target nodejs --release 
 
       - name: Assemble package
         run: |
@@ -77,9 +68,17 @@ jobs:
 
           fs.writeFileSync("pkg/bundler/package.json", JSON.stringify(pkg, null, 2));
           EOF
-
-      - name: Publish to npm
-        run: wasm-pack publish 
-        
-      - name: publish to jsr
-        run: wasm-pack publish jsr
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "25"
+          registry-url: "https://registry.npmjs.org"
+      - name: Publish @pratyay360/upiqrcode
+        run: |
+          cp package.json pkg && cd pkg
+          npm publish  --access public
+      - name: Publish @pratyay360/upiqrcode to jsr
+        run: |
+          cp  package.json pkg && cd pkg
+          npx jsr publish 
