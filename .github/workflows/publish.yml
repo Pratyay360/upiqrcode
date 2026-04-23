@@ -47,7 +47,6 @@ jobs:
         with:
           node-version: "25"
           registry-url: "https://registry.npmjs.org"
-          scope: "@pratyay360"
       - name: Publish @pratyay360/upiqrcode
         run: |
           cp package.json pkg && cp jsr.json pkg && cd pkg
