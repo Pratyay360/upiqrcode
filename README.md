@@ -1,8 +1,58 @@
 <div align="center">
 
-  <h1><code>wasm-pack-template</code></h1>
 
-  <strong>A template for kick starting a Rust and WebAssembly project using <a href="https://github.com/rustwasm/wasm-pack">wasm-pack</a>.</strong>
+    ```
+    import { useState, useEffect } from "react";
+import init, { upiqrcode, type UpiqrcodeResult } from "upiqrcode";
+
+function UPIQRCode() {
+  const [qrSvg, setQrSvg] = useState("");
+  const [intent, setIntent] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const generateQR = async () => {
+      setLoading(true);
+      try {
+        await init();
+
+        const result = (await upiqrcode({
+          payeeVPA: "pratyay2003@upi",
+          payeeName: "pratyay mustafi",
+          amount: "100.00",
+          transactionNote: "Payment for services",
+        })) as UpiqrcodeResult;
+
+        setQrSvg(result.qr);
+        setIntent(result.intent);
+      } catch (err) {
+        console.error("Error generating QR code:", err);
+        setError(err instanceof Error ? err.message : String(err));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    generateQR();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
+  return (
+    <div>
+      <h2>UPI Payment QR Code</h2>
+      <div dangerouslySetInnerHTML={{ __html: qrSvg }} />
+      <p>UPI Intent: {intent}</p>
+    </div>
+  );
+}
+
+export default UPIQRCode;
+
+
+    ```
 
   <p>
     <a href="https://travis-ci.org/rustwasm/wasm-pack-template"><img src="https://img.shields.io/travis/rustwasm/wasm-pack-template.svg?style=flat-square" alt="Build Status" /></a>
