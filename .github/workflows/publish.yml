@@ -3,7 +3,6 @@ name: Build & Publish
 on:
   workflow_dispatch:
 
-
 permissions:
   contents: read
   actions: write
@@ -40,15 +39,14 @@ jobs:
         run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
       - name: Build nodejs
-        run: wasm-pack build --target nodejs
-      
+        run: wasm-pack build --target web
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "25"
           registry-url: "https://registry.npmjs.org"
-      - name: Publish @pratyay360/upiqrcode
+      - name: Publish
         run: |
           cd pkg
           npm publish  --access public
-          
