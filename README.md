@@ -5,6 +5,8 @@ Generate UPI QR codes as SVG — compiled to WebAssembly.
 [![npm](https://img.shields.io/npm/v/upiqrcode)](https://www.npmjs.com/package/upiqrcode)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](./LICENSE_APACHE)
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Pratyay360/upiqrcode)
+
 ## Installation
 
 ```bash
