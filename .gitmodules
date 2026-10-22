@@ -1,0 +1,3 @@
+[submodule "dynamic-upi-qr"]
+	path = dynamic-upi-qr
+	url = https://github.com/Pratyay360/dynamic-upi-qr

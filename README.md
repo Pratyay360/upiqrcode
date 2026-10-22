@@ -1,62 +1,227 @@
-# upiqrcode
+<div align="center">
 
-Generate UPI QR codes as SVG .. 
+  <h1>⚡ upiqrcode</h1>
+  <p><strong>Blazing-fast, lightweight UPI QR code generator producing clean SVG markup and intent URLs.</strong></p>
 
-for documentation kindly visit [docs](https://dynamic-upi-qr.netlify.app/)
-[![](https://data.jsdelivr.com/v1/package/npm/upiqrcode/badge)](https://www.jsdelivr.com/package/npm/upiqrcode)
+  <p>
+    <a href="https://www.npmjs.com/package/upiqrcode"><img src="https://img.shields.io/npm/v/upiqrcode?color=blue&style=flat-square" alt="NPM Version" /></a>
+    <a href="https://www.npmjs.com/package/upiqrcode"><img src="https://img.shields.io/npm/dm/upiqrcode?color=brightgreen&style=flat-square" alt="NPM Downloads" /></a>
+    <a href="https://bundlephobia.com/package/upiqrcode"><img src="https://img.shields.io/bundlephobia/minzip/upiqrcode?style=flat-square" alt="Minified Size" /></a>
+    <a href="./LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue?style=flat-square" alt="License" /></a>
+  </p>
 
-[![npm](https://img.shields.io/npm/v/upiqrcode)](https://www.npmjs.com/package/upiqrcode)
-[![License](https://img.shields.io/badge/license-Apache--2.0-blue)](./LICENSE_APACHE)
+  <p>
+    <a href="https://dynamic-upi-qr.netlify.app/"><strong>Explore Documentation &amp; Live Demo &raquo;</strong></a>
+  </p>
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Pratyay360/upiqrcode)
+</div>
 
+---
 
-[![zread](https://img.shields.io/badge/Ask_Zread-_.svg?style=for-the-badge&color=00b0aa&labelColor=000000&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQuOTYxNTYgMS42MDAxSDIuMjQxNTZDMS44ODgxIDEuNjAwMSAxLjYwMTU2IDEuODg2NjQgMS42MDE1NiAyLjI0MDFWNC45NjAxQzEuNjAxNTYgNS4zMTM1NiAxLjg4ODEgNS42MDAxIDIuMjQxNTYgNS42MDAxSDQuOTYxNTZDNS4zMTUwMiA1LjYwMDEgNS42MDE1NiA1LjMxMzU2IDUuNjAxNTYgNC45NjAxVjIuMjQwMUM1LjYwMTU2IDEuODg2NjQgNS4zMTUwMiAxLjYwMDEgNC45NjE1NiAxLjYwMDFaIiBmaWxsPSIjZmZmIi8%2BCjxwYXRoIGQ9Ik00Ljk2MTU2IDEwLjM5OTlIMi4yNDE1NkMxLjg4ODEgMTAuMzk5OSAxLjYwMTU2IDEwLjY4NjQgMS42MDE1NiAxMS4wMzk5VjEzLjc1OTlDMS42MDE1NiAxNC4xMTM0IDEuODg4MSAxNC4zOTk5IDIuMjQxNTYgMTQuMzk5OUg0Ljk2MTU2QzUuMzE1MDIgMTQuMzk5OSA1LjYwMTU2IDE0LjExMzQgNS42MDE1NiAxMy43NTk5VjExLjAzOTlDNS42MDE1NiAxMC42ODY0IDUuMzE1MDIgMTAuMzk5OSA0Ljk2MTU2IDEwLjM5OTlaIiBmaWxsPSIjZmZmIi8%2BCjxwYXRoIGQ9Ik0xMy43NTg0IDEuNjAwMUgxMS4wMzg0QzEwLjY4NSAxLjYwMDEgMTAuMzk4NCAxLjg4NjY0IDEwLjM5ODQgMi4yNDAxVjQuOTYwMUMxMC4zOTg0IDUuMzEzNTYgMTAuNjg1IDUuNjAwMSAxMS4wMzg0IDUuNjAwMUgxMy43NTg0QzE0LjExMTkgNS42MDAxIDE0LjM5ODQgNS4zMTM1NiAxNC4zOTg0IDQuOTYwMVYyLjI0MDFDMTQuMzk4NCAxLjg4NjY0IDE0LjExMTkgMS42MDAxIDEzLjc1ODQgMS42MDAxWiIgZmlsbD0iI2ZmZiIvPgo8cGF0aCBkPSJNNCAxMkwxMiA0TDQgMTJaIiBmaWxsPSIjZmZmIi8%2BCjxwYXRoIGQ9Ik00IDEyTDEyIDQiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K&logoColor=ffffff)](https://zread.ai/Pratyay360/upiqrcode)
-## Installation
+## ✨ Features
+
+- **🚀 WebAssembly Powered:** Built in Rust and compiled via `wasm-pack` for peak performance.
+- **🎨 Pure SVG Output:** No canvas or DOM dependencies—renders crystal-clear at any resolution.
+- **📱 Universal Compatibility:** Works seamlessly across Node.js, browsers, Edge runtimes, and Cloudflare Workers.
+- **🔗 Dual Output:** Returns both the visual SVG QR code and the raw UPI deep-link intent (`upi://pay?...`).
+- **🛡️ Spec Compliant:** Adheres strictly to the NPCI Unified Payments Interface specifications.
+
+---
+
+## 📦 Installation
+
+Install with your preferred package manager:
 
 ```bash
+# npm
 npm install upiqrcode
+
+# pnpm
+pnpm add upiqrcode
+
+# yarn
+yarn add upiqrcode
+
+# bun
+bun add upiqrcode
 ```
 
-## Usage
+---
 
-### `upiqrcode(params)` → `Promise<UpiqrcodeResult>`
+## 🚀 Quick Start
 
-Generates a UPI payment QR code as an SVG string along with the UPI intent URL.
+### 1. Node.js / TypeScript / ESM
 
-## API
+```typescript
+import { upiqrcode } from "upiqrcode";
 
-### `UpiqrcodeParams`
+async function generateInvoice() {
+  const result = await upiqrcode({
+    payeeVPA: "merchant@bank",
+    payeeName: "Acme Corporation",
+    amount: "499.00",
+    currency: "INR",
+    transactionNote: "Invoice #INV-2026-001",
+    transactionId: "TXN1234567890",
+  });
 
-| Field                | Type     | Required | Description                        |
-|----------------------|----------|----------|------------------------------------|
-| `payeeVPA`           | `string` | ✅        | UPI Virtual Payment Address (VPA)  |
-| `payeeName`          | `string` | ✅        | Name of the payee                  |
-| `amount`             | `string` | —        | Transaction amount                 |
-| `minimumAmount`      | `string` | —        | Minimum acceptable amount          |
-| `currency`           | `string` | —        | Currency code (default: `INR`)     |
-| `transactionId`      | `string` | —        | Unique transaction ID              |
-| `transactionRef`     | `string` | —        | Transaction reference              |
-| `transactionNote`    | `string` | —        | Note or description                |
-| `payeeMerchantCode`  | `string` | —        | Merchant category code             |
-| `transactionRefUrl`  | `string` | —        | Reference URL                      |
+  console.log("UPI Intent Link:", result.intent);
+  // Output: upi://pay?pa=merchant@bank&pn=Acme%20Corporation&am=499.00&cu=INR&tn=Invoice%20%23INV-2026-001&tr=TXN1234567890
 
-### `UpiqrcodeResult`
+  console.log("Raw SVG Code:\n", result.qr);
+}
 
-| Field    | Type     | Description              |
-|----------|----------|--------------------------|
-| `qr`     | `string` | SVG markup of the QR code |
-| `intent` | `string` | Generated UPI intent URL  |
+generateInvoice();
+```
+
+---
+
+### 2. React / Next.js
+
+```tsx
+"use client";
+
+import { useEffect, useState } from "react";
+import { upiqrcode } from "upiqrcode";
+
+export default function PaymentQRCode() {
+  const [svg, setSvg] = useState<string>("");
+  const [intent, setIntent] = useState<string>("");
+
+  useEffect(() => {
+    async function fetchQR() {
+      const data = await upiqrcode({
+        payeeVPA: "business@upi",
+        payeeName: "My Online Store",
+        amount: "1500.00",
+        transactionNote: "Order #8821",
+      });
+      setSvg(data.qr);
+      setIntent(data.intent);
+    }
+
+    fetchQR();
+  }, []);
+
+  return (
+    <div style={{ textAlign: "center", padding: "1.5rem" }}>
+      <h3>Scan to Pay</h3>
+      {svg ? (
+        <div
+          style={{ width: 250, margin: "0 auto" }}
+          dangerouslySetInnerHTML={{ __html: svg }}
+        />
+      ) : (
+        <p>Loading QR Code...</p>
+      )}
+      {intent && (
+        <p>
+          <a href={intent}>Click here to pay directly on mobile</a>
+        </p>
+      )}
+    </div>
+  );
+}
+```
+
+---
+
+### 3. Vanilla JavaScript (Browser / CDN)
+
+Link the CDN script and use the `upiqrcode` function directly.
+
+https://esm.sh/upiqrcode .. 
+
+https://cdn.jsdelivr.net/npm/upiqrcode/+esm
 
 
-## Building from Source
+https://unpkg.com/upiqrcode@1.5.5/upiqrcode.js
 
-Requires [Rust](https://rustup.rs/) and [wasm-pack](https://rustwasm.github.io/wasm-pack/).
+
+
+```html
+<div id="qrcode-container"></div>
+
+<script type="module">
+  import { upiqrcode } from "https://cdn.jsdelivr.net/npm/upiqrcode/+esm";
+
+  const { qr } = await upiqrcode({
+    payeeVPA: "username@okhdfcbank",
+    payeeName: "Rahul Sharma",
+    amount: "250.00",
+  });
+
+  document.getElementById("qrcode-container").innerHTML = qr;
+</script>
+```
+
+---
+
+## 📖 API Reference
+
+### `upiqrcode(params)`
+
+```typescript
+function upiqrcode(params: UpiqrcodeParams): Promise<UpiqrcodeResult>
+```
+
+#### Parameters (`UpiqrcodeParams`)
+
+| Parameter | Type | Required | Default | Description |
+| :--- | :--- | :---: | :---: | :--- |
+| `payeeVPA` | `string` | **Yes** | — | Payee Virtual Payment Address (e.g., `user@upi`). |
+| `payeeName` | `string` | **Yes** | — | Name of the recipient or merchant. |
+| `amount` | `string` | No | — | Transaction amount (e.g., `"100.00"`). |
+| `minimumAmount` | `string` | No | — | Minimum transaction amount allowed. |
+| `currency` | `string` | No | `"INR"` | 3-letter currency code (Standard: `INR`). |
+| `transactionId` | `string` | No | — | Unique bank transaction reference ID (`tr`). |
+| `transactionRef` | `string` | No | — | Merchant reference / order ID. |
+| `transactionNote` | `string` | No | — | Short description or remark (`tn`). |
+| `payeeMerchantCode`| `string` | No | — | 4-digit Merchant Category Code (MCC). |
+| `transactionRefUrl`| `string` | No | — | Order URL / digital invoice URL (`url`). |
+
+#### Return Value (`UpiqrcodeResult`)
+
+| Property | Type | Description |
+| :--- | :--- | :--- |
+| `qr` | `string` | Complete `<svg>...</svg>` string ready to insert into DOM or file. |
+| `intent` | `string` | Fully-encoded UPI intent link (`upi://pay?...`). |
+
+---
+
+## 🛠️ Building from Source
+
+This package compiles Rust code to WebAssembly using [`wasm-pack`](https://rustwasm.github.io/wasm-pack/).
+
+### Prerequisites
+
+- [Rust & Cargo](https://rustup.rs/) (latest stable)
+- [Node.js](https://nodejs.org/) (v18+)
+- [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)
+
+### Steps
 
 ```bash
+# 1. Clone the repository
+git clone https://github.com/Pratyay360/upiqrcode.git
+cd upiqrcode
+
+# 2. Build WebAssembly target
 wasm-pack build --target bundler
+
+# 3. Install JS dependencies
+npm install
 ```
 
-## License
+---
 
-[Apache-2.0](./LICENSE_APACHE)
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+Feel free to open an issue or pull request on [GitHub](https://github.com/Pratyay360/upiqrcode).
+
+---
+
+## 📄 License
+
+Distributed under the **Apache-2.0 License**. See [`LICENSE_APACHE`](./LICENSE_APACHE) for more information.
