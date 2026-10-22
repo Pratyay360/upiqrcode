@@ -1,52 +1,38 @@
-name: Build & Publish
-
+name: ci
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
   contents: read
-  actions: write
+  pages: write
   id-token: write
-  packages: write
 
 jobs:
-  build-and-publish:
-    name: wasm-pack build & npm publish
+  deploy:
     runs-on: ubuntu-latest
-
+    container:
+      image: ghcr.io/jdx/mise:2026.9.6
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install Rust toolchain
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          targets: wasm32-unknown-unknown
-
-      - name: Cache Cargo registry & build
-        uses: actions/cache@v4
+      - name: checkout code
+        uses: actions/checkout@main
+      - name: cache mise dependencies
+        uses: actions/cache@main
         with:
           path: |
-            ~/.cargo/registry
-            ~/.cargo/git
-            target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: ${{ runner.os }}-cargo-
-
-      - name: Install wasm-pack
-        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
-
-      - name: Build nodejs
-        run: wasm-pack build --target web
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "25"
-          registry-url: "https://registry.npmjs.org"
-      - name: Publish
+            ~/.local/share/mise/installs
+            ~/.local/share/mise/cache
+          key: mise-${{ runner.os }}-${{ hashFiles('mise.toml') }}
+          restore-keys: |
+            mise-${{ runner.os }}-
+      - name: Install dependencies
         run: |
-          cd pkg
-          npm publish  --access public
+            mise trust
+            mise deps
+            mise install
+            mise upload
+        env:
+          NODE_AUTH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ github.token }}

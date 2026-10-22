@@ -1,3 +1,24 @@
 [tools]
-node = "24"
+cargo-binstall = "latest"
+"github:wasm-bindgen/wasm-pack" = "latest"
+node = "25"
 rust = "latest"
+
+
+
+[env]
+MISE_EXPERIMENTAL = "true"
+
+
+[tasks.install]
+description = "Install JS dependencies"
+run = "cargo install"
+
+[tasks.build]
+description="build project"
+run = "wasm-pack build --target web"
+
+
+[tasks.upload]
+description="upload wasm package"
+run = [ "mise run build", "wasm-pack publish" ]
